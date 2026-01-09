@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { AppRoute } from '../types.ts';
+import { AppRoute } from '../types';
 
 interface NavbarProps {
   cartCount: number;

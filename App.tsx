@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { Product, AppRoute, CartItem } from './types.ts';
-import { PRODUCTS, CATEGORIES } from './constants.ts';
-import Navbar from './components/Navbar.tsx';
-import Hero from './components/Hero.tsx';
-import ProductCard from './components/ProductCard.tsx';
-import Footer from './components/Footer.tsx';
-import { getPersonalizedGreeting, getGeminiProductInsight } from './services/geminiService.ts';
+import { Product, AppRoute, CartItem } from './types';
+import { PRODUCTS, CATEGORIES } from './constants';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import ProductCard from './components/ProductCard';
+import Footer from './components/Footer';
+import { getPersonalizedGreeting, getGeminiProductInsight } from './services/geminiService';
 
 const App: React.FC = () => {
   const [route, setRoute] = useState<string>(AppRoute.HOME);

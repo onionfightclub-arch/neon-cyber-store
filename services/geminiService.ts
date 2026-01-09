@@ -1,13 +1,11 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY || "";
-
 export const getGeminiProductInsight = async (productName: string, description: string) => {
-  if (!API_KEY) return "AI System Offline. Please check credentials.";
+  if (!process.env.API_KEY) return "AI System Offline. Please check credentials.";
 
   try {
-    const ai = new GoogleGenAI({ apiKey: API_KEY });
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: `You are a futuristic Cyber-Advisor for a high-tech store called NEON-X. Provide a 2-sentence "hacker-style" endorsement or warning about the product: ${productName}. Context: ${description}. Keep it mysterious and high-tech.`,
@@ -26,10 +24,10 @@ export const getGeminiProductInsight = async (productName: string, description: 
 };
 
 export const getPersonalizedGreeting = async () => {
-  if (!API_KEY) return "Welcome to the Void.";
+  if (!process.env.API_KEY) return "Welcome to the Void.";
 
   try {
-    const ai = new GoogleGenAI({ apiKey: API_KEY });
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: "Generate a short, catchy, 1-sentence cyberpunk welcome greeting for a new user entering the store 'NEON-X'.",

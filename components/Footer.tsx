@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { AppRoute } from '../types.ts';
+import { AppRoute } from '../types';
 
 interface FooterProps {
   onNavigate: (route: string) => void;
