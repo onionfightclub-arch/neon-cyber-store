@@ -32,6 +32,7 @@
             'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             'float': 'float 3s ease-in-out infinite',
             'glitch': 'glitch 1s linear infinite',
+            'flicker': 'flicker 0.15s infinite',
           },
           keyframes: {
             float: {
@@ -42,6 +43,11 @@
               '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
               '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
               '62%': { transform: 'translate(0,0) skew(5deg)' },
+            },
+            flicker: {
+              '0%': { opacity: '0.97' },
+              '50%': { opacity: '1' },
+              '100%': { opacity: '0.98' },
             }
           }
         }
@@ -53,6 +59,7 @@
       background-color: #0A0A0A;
       color: #E0E0E0;
       font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
     }
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Orbitron', sans-serif;
@@ -67,20 +74,25 @@
       border-color: #00FFFF;
       box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
     }
-    /* Hide scrollbar for clean look */
-    ::-webkit-scrollbar {
-      width: 8px;
+    /* CRT Scanline Overlay */
+    body::before {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      z-index: 1000;
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
     }
-    ::-webkit-scrollbar-track {
-      background: #0A0A0A;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #333333;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #00FFFF;
-    }
+    /* Hide scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00FFFF; }
   </style>
 <script type="importmap">
 {
@@ -93,7 +105,7 @@
 }
 </script>
 </head>
-<body>
+<body class="animate-flicker">
   <div id="root"></div>
   <script type="module" src="./index.tsx"></script>
 </body>

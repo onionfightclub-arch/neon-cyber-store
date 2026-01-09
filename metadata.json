@@ -2,6 +2,7 @@
   "name": "NEON-X Cyber Store",
   "description": "A futuristic, cyberpunk-inspired e-commerce platform featuring immersive dark themes, neon accents, and AI-powered product insights using Gemini.",
   "requestFramePermissions": [
-    "camera"
+    "camera",
+    "microphone"
   ]
 }
